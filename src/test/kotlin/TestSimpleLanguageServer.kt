@@ -1,4 +1,5 @@
 import LSP4JUtils.emptyInitialise
+import org.eclipse.lsp4j.TextDocumentSyncKind
 import org.junit.jupiter.api.Test
 import server.SimpleLanguageServer
 import server.SimpleLSPLauncher
@@ -16,7 +17,11 @@ class TestSimpleLanguageServer {
 
         Socket("127.0.0.1", port).use { socket ->
             val ls = LSP4JUtils.getRemoteLSService(socket)
-            ls.emptyInitialise { println("Server initialized, got response:\n$it") }
+            ls.emptyInitialise {
+                println("Server initialized, got response:\n$it")
+                kotlin.test.assertTrue { it.capabilities.completionProvider == null }
+                kotlin.test.assertTrue { it.capabilities.textDocumentSync.left == TextDocumentSyncKind.Full }
+            }
             tcpServer.stop()
             Thread.sleep(1000)
         }
