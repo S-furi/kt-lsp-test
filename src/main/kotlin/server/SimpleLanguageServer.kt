@@ -89,7 +89,7 @@ class SimpleLanguageServer: LanguageServer, LanguageClientAware {
     }
 }
 
-class SimpleTCPLanguageServer(val ls: SimpleLanguageServer, port: Int = 9081) {
+class SimpleLSPLauncher(val ls: SimpleLanguageServer, port: Int = 9081) {
     private val stopFlag = AtomicBoolean(false)
     private val sSocket = ServerSocket(port)
 

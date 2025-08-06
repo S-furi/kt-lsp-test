@@ -1,7 +1,7 @@
 import LSP4JUtils.emptyInitialise
 import org.junit.jupiter.api.Test
 import server.SimpleLanguageServer
-import server.SimpleTCPLanguageServer
+import server.SimpleLSPLauncher
 import java.net.Socket
 
 class TestSimpleLanguageServer {
@@ -9,7 +9,7 @@ class TestSimpleLanguageServer {
     @Test
     fun testSimpleLS() {
         val port = 9081
-        val tcpServer = SimpleTCPLanguageServer(SimpleLanguageServer(), port)
+        val tcpServer = SimpleLSPLauncher(SimpleLanguageServer(), port)
             .also { it.start() }
 
         Thread.sleep(2000)
