@@ -13,6 +13,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    implementation("org.eclipse.lsp4j:org.eclipse.lsp4j:0.24.0")
 }
 
 tasks.test {
